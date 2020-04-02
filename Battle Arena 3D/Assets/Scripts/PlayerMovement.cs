@@ -112,4 +112,14 @@ public class PlayerMovement : MonoBehaviour {
             rb.AddForce(Vector3.up * jumpPower, ForceMode.Impulse);
         }
     }
+
+    public float getExtraGravity()
+    {
+        return extraGravity;
+    }
+
+    public void setExtraGravity(float extraGravity)
+    {
+        this.extraGravity = extraGravity;
+    }
 }
