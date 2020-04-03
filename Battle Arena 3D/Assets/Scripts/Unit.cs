@@ -4,6 +4,7 @@ using UnityEngine;
 
 public abstract class Unit : MonoBehaviour{
 
+    //Attributi generici per ogni unità
     [SerializeField] private string unitName;
     [SerializeField] private float level;
     [SerializeField] private float maxHealth, currentHealth;
@@ -103,26 +104,22 @@ public abstract class Unit : MonoBehaviour{
         this.weapon = weapon;
     }
 
-
+    //get set unitType
     public UnitType getUnitType()
     {
         return unitType;
     }
 
-    
+    public enum UnitType
+    {
+        tank,
+        range,
+        wizard,
+        monster
+    }
 
-
-
-    
 
     public abstract void Attack();
-
 }
 
-public enum UnitType
-{
-    tank,
-    range,
-    wizard,
-    monster
-}
+
