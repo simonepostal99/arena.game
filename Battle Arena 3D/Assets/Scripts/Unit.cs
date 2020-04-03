@@ -13,6 +13,7 @@ public abstract class Unit : MonoBehaviour{
     [SerializeField] private Object dress;
     [SerializeField] private Object weapon;
     [SerializeField] private UnitType unitType;
+    [SerializeField] private int team;
 
     //get set unitName
     public string getUnitName()
@@ -110,6 +111,12 @@ public abstract class Unit : MonoBehaviour{
         return unitType;
     }
 
+    //get team
+    public int getTeam()
+    {
+        return team;
+    }
+
     public enum UnitType
     {
         tank,
@@ -119,7 +126,7 @@ public abstract class Unit : MonoBehaviour{
     }
 
 
-    public abstract void Attack();
+    
 }
 
 

@@ -13,17 +13,13 @@ public class Tank : Unit {
 	void Update () {
 
         if (Input.GetMouseButtonDown(0) && !Input.GetMouseButton(1))
-            Attack();
+
 
         if (Input.GetMouseButton(1) && !Input.GetMouseButtonDown(0))
             Defend();
     }
 
-    public override void Attack()
-    {
-        Debug.Log("Attacco tank");
-    }
-
+    
     private void Defend()
     {
         Debug.Log("Paro");

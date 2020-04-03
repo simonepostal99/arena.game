@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -529,6 +529,36 @@ Transform:
   m_Father: {fileID: 1385441473}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &310184824
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 310184825}
+  m_Layer: 0
+  m_Name: ProjectileSpawnPoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &310184825
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 310184824}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.01699996, z: 1.61}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1999480031}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &508211142
 GameObject:
   m_ObjectHideFlags: 0
@@ -545,6 +575,7 @@ GameObject:
   - component: {fileID: 508211144}
   - component: {fileID: 508211143}
   - component: {fileID: 508211146}
+  - component: {fileID: 508211151}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Unit
@@ -588,6 +619,7 @@ MonoBehaviour:
   dress: {fileID: 0}
   weapon: {fileID: 0}
   unitType: 0
+  team: 0
 --- !u!54 &508211145
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -693,6 +725,29 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 168.23901, z: 0}
+--- !u!114 &508211151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508211142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1fdc5acbc3fbd22428530b8dfe9c0ec5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  unitName: 
+  level: 0
+  maxHealth: 0
+  currentHealth: 0
+  speedMovement: 0
+  basicDamage: 0
+  attackRange: 0
+  dress: {fileID: 0}
+  weapon: {fileID: 0}
+  unitType: 0
+  team: 2
 --- !u!1 &529526679
 GameObject:
   m_ObjectHideFlags: 0
@@ -1482,8 +1537,8 @@ GameObject:
   - component: {fileID: 1618744296}
   - component: {fileID: 1618744295}
   - component: {fileID: 1618744294}
-  - component: {fileID: 1618744300}
   - component: {fileID: 1618744301}
+  - component: {fileID: 1618744300}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -1613,12 +1668,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 1618744293}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 44c74c0ed6a1b764280633733d898d80, type: 3}
+  m_Script: {fileID: 11500000, guid: 1fdc5acbc3fbd22428530b8dfe9c0ec5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unitName: Marco
-  level: 1
-  maxHealth: 100
+  unitName: 
+  level: 0
+  maxHealth: 0
   currentHealth: 0
   speedMovement: 0
   basicDamage: 0
@@ -1626,6 +1681,7 @@ MonoBehaviour:
   dress: {fileID: 0}
   weapon: {fileID: 0}
   unitType: 0
+  team: 1
 --- !u!114 &1618744301
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1718,6 +1774,7 @@ GameObject:
   - component: {fileID: 1999480034}
   - component: {fileID: 1999480033}
   - component: {fileID: 1999480032}
+  - component: {fileID: 1999480035}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -1738,6 +1795,7 @@ Transform:
   m_Children:
   - {fileID: 2038427161}
   - {fileID: 1185465688}
+  - {fileID: 310184825}
   m_Father: {fileID: 1618744299}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1748,12 +1806,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1999480030}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 76b1797c0aba6174891223c7b7e4de9d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactionDistance: 1.7
+  unit: {fileID: 1618744300}
 --- !u!81 &1999480033
 AudioListener:
   m_ObjectHideFlags: 0
@@ -1804,6 +1863,24 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1999480035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1999480030}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3872c6fd3623cf049aab28ead2f1ec69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxChargeTime: 3
+  projectileStepValue: 40
+  projectilePrefab: {fileID: 3427301390142769001, guid: f7184eea81e86884cb1ab83188e6ebd8,
+    type: 3}
+  projectileSpawnPoint: {fileID: 310184825}
+  unit: {fileID: 1618744300}
 --- !u!1 &2010287951
 GameObject:
   m_ObjectHideFlags: 0

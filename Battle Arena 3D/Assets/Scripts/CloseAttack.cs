@@ -6,6 +6,7 @@ public class CloseAttack : MonoBehaviour
 {
     //[SerializeField] GameObject cam;
     [SerializeField] float interactionDistance;
+    [SerializeField] Unit unit;
 
     // Start is called before the first frame update
     void Start()
@@ -16,24 +17,27 @@ public class CloseAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //controllo se colpisco il nemico
         checkCollision();
     }
 
     private void checkCollision()
     {
-        if (Input.GetMouseButtonDown(0) == true)
+        //controllo se premo il mouse sinistro
+        if (Input.GetMouseButtonDown(0))
         {
-            RaycastHit hit;
-            //Ray pointer = new Ray(transform.position, Vector3.forward);
 
+            //creo un raggio nella direzione della camera per controllare se colpisco un oggetto
+            RaycastHit hit;
             Debug.DrawRay(transform.position, Vector3.forward * interactionDistance);
 
 
             if (Physics.Raycast(transform.position, transform.forward, out hit, interactionDistance))
             {
-                if (hit.collider.tag == "Unit")
+                //controllo se l'oggetto che ho colpito è un nemico
+                if (hit.collider.tag == "Unit" && hit.transform.GetComponent<Unit>().getTeam() != unit.getTeam())
                 {
-                    Debug.Log("Colpito!");
+                    //knockback sull'avversario colpito
                     hit.collider.GetComponent<Knockback>().knockback(transform.forward);
                 }
             }
