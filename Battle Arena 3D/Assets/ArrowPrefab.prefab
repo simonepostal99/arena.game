@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 3286983146747311980}
   - component: {fileID: 1375154359403241578}
   - component: {fileID: 8158841905826170143}
+  - component: {fileID: 1002161456}
   m_Layer: 0
   m_Name: ArrowPrefab
   m_TagString: Projectile
@@ -109,7 +110,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!114 &8158841905826170143
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -122,6 +123,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ed3560666b8775408f3351877fe8d64, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &1002161456
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3427301390142769001}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b2950581b1b3694e9ef2c113f3c15cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sendTriggerMessage: 0
+  layerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  skinWidth: 0.1
 --- !u!1 &6916682300321635235
 GameObject:
   m_ObjectHideFlags: 0

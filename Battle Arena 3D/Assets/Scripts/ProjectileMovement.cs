@@ -6,6 +6,7 @@ public class ProjectileMovement : MonoBehaviour
 {
     Rigidbody bodyArrow;
     int team;
+    bool sticked;
 
     private void Awake()
     {
@@ -22,7 +23,8 @@ public class ProjectileMovement : MonoBehaviour
     void Update()
     {
         //aggiorno la rotazione della freccia (movimento parabolico)
-        transform.rotation = Quaternion.LookRotation(bodyArrow.velocity);
+        if(!sticked)
+            transform.rotation = Quaternion.LookRotation(bodyArrow.velocity);
     }
 
 
@@ -35,18 +37,34 @@ public class ProjectileMovement : MonoBehaviour
             //controllo se l'unità è del team avversario della freccia
             if(other.GetComponent<Unit>().getTeam() != team)
             {
+                sticked = true;
                 //eseguo il knockvbck sull'avversario
                 other.GetComponent<Knockback>().knockback(transform.forward);
 
+                transform.parent = other.transform;
+                bodyArrow.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+                bodyArrow.isKinematic = true;              
+
+
                 //distruggo la freccia
-                Destroy(gameObject);
+                Destroy(gameObject,5f);
             }
         }else if (other.tag == "SceneObject")
         {
+            sticked = true;
+           
+
+            transform.parent = other.transform;
+            bodyArrow.collisionDetectionMode = CollisionDetectionMode.ContinuousSpeculative;
+            bodyArrow.isKinematic = true;
+
+
             //distruggo la freccia
-            Destroy(gameObject);
+            Destroy(gameObject, 5f);
         }
     }
+
+    
 
 
     public void setTeam(int teamValue)

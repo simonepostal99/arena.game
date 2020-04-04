@@ -13,7 +13,16 @@ public class DistanceAttack : MonoBehaviour
     [SerializeField] GameObject projectilePrefab;
     [SerializeField] Transform projectileSpawnPoint;
     [SerializeField] Unit unit;
-    [SerializeField] float sensitivityZoom;
+    [SerializeField] float sensitivityZoomIn, sensitivityZoomOut;
+    [SerializeField] float maxCameraFieldOfView, minCameraFieldOfView;
+
+    private Camera camera;
+
+
+    private void Awake()
+    {
+        camera = GetComponent<Camera>();
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -30,18 +39,15 @@ public class DistanceAttack : MonoBehaviour
             attackButtonPressedTime += Time.deltaTime;
 
             //Zoomare la camera più il tasto sx è premuto
-            /*float fov = Camera.main.fieldOfView;
-            fov += attackButtonPressedTime * sensitivityZoom;
-            fov = Mathf.Clamp(fov, 30f, 60f);
-            Camera.main.fieldOfView = fov;*/
+            float fov = camera.fieldOfView;
+            fov -= attackButtonPressedTime * sensitivityZoomIn;
+            fov = Mathf.Clamp(fov, minCameraFieldOfView, maxCameraFieldOfView);
+            camera.fieldOfView = fov;
         }
 
         if (Input.GetMouseButtonUp(0))
         {
-            //Riporto lo zoom allo stato originale
-            /*Camera.main.fieldOfView = Mathf.Lerp(Camera.main.fieldOfView, 60f, 0.4f);*/
-
-
+            
             //assegno il valore della forza di lancio in base al tempo di pressione del mouse
             attackButtonPressedTime = Mathf.Clamp(attackButtonPressedTime, 0.0f, maxChargeTime);
             projectileForce = projectileStepValue * attackButtonPressedTime;
@@ -60,8 +66,13 @@ public class DistanceAttack : MonoBehaviour
             //azzero la forza di lancio
             attackButtonPressedTime = 0;
             projectileForce = 0;
+
+
+            //Riporto lo zoom allo stato originale
+            camera.fieldOfView = maxCameraFieldOfView;
         }
 
         
     }
+
 }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -636,7 +636,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
-  m_CollisionDetection: 0
+  m_CollisionDetection: 2
 --- !u!114 &508211146
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1728,7 +1728,10 @@ MonoBehaviour:
     type: 3}
   projectileSpawnPoint: {fileID: 0}
   unit: {fileID: 1618744300}
-  sensitivityZoom: 0
+  sensitivityZoomIn: 0
+  sensitivityZoomOut: 0
+  maxCameraFieldOfView: 0
+  minCameraFieldOfView: 0
 --- !u!1 &1945270191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1909,12 +1912,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   maxChargeTime: 3
-  projectileStepValue: 40
+  projectileStepValue: 50
   projectilePrefab: {fileID: 3427301390142769001, guid: f7184eea81e86884cb1ab83188e6ebd8,
     type: 3}
   projectileSpawnPoint: {fileID: 310184825}
   unit: {fileID: 1618744300}
-  sensitivityZoom: 5
+  sensitivityZoomIn: 7
+  sensitivityZoomOut: 4
+  maxCameraFieldOfView: 60
+  minCameraFieldOfView: 40
 --- !u!1 &2010287951
 GameObject:
   m_ObjectHideFlags: 0
