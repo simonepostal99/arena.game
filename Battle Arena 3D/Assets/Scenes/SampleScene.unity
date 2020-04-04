@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641252, b: 0.574817, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -267,7 +267,7 @@ GameObject:
   - component: {fileID: 173586266}
   m_Layer: 0
   m_Name: Cube (2)
-  m_TagString: Untagged
+  m_TagString: SceneObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -358,7 +358,7 @@ GameObject:
   - component: {fileID: 254006655}
   m_Layer: 0
   m_Name: Cube (3)
-  m_TagString: Untagged
+  m_TagString: SceneObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -449,7 +449,7 @@ GameObject:
   - component: {fileID: 294327718}
   m_Layer: 0
   m_Name: LaneGladiator
-  m_TagString: Untagged
+  m_TagString: SceneObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -553,8 +553,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 310184824}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.01699996, z: 1.61}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 0, y: -0.01699996, z: 1.6100003}
+  m_LocalScale: {x: 1, y: 1.0062541, z: 1.0062541}
   m_Children: []
   m_Father: {fileID: 1999480031}
   m_RootOrder: 2
@@ -576,6 +576,7 @@ GameObject:
   - component: {fileID: 508211143}
   - component: {fileID: 508211146}
   - component: {fileID: 508211151}
+  - component: {fileID: 508211152}
   m_Layer: 0
   m_Name: Player2
   m_TagString: Unit
@@ -748,6 +749,18 @@ MonoBehaviour:
   weapon: {fileID: 0}
   unitType: 0
   team: 2
+--- !u!114 &508211152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 508211142}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f8a3c046336067f4896823dc90eef355, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &529526679
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +959,7 @@ GameObject:
   - component: {fileID: 829705264}
   m_Layer: 0
   m_Name: LaneArchierLeft
-  m_TagString: Untagged
+  m_TagString: SceneObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1320,7 +1333,7 @@ GameObject:
   - component: {fileID: 1307732642}
   m_Layer: 0
   m_Name: LaneArchierRight
-  m_TagString: Untagged
+  m_TagString: SceneObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1446,7 +1459,7 @@ GameObject:
   - component: {fileID: 1588828060}
   m_Layer: 0
   m_Name: Cube (1)
-  m_TagString: Untagged
+  m_TagString: SceneObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1539,6 +1552,7 @@ GameObject:
   - component: {fileID: 1618744294}
   - component: {fileID: 1618744301}
   - component: {fileID: 1618744300}
+  - component: {fileID: 1618744302}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Untagged
@@ -1696,6 +1710,25 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lane: {fileID: 294327717}
   distanceFall: 30
+--- !u!114 &1618744302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1618744293}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3872c6fd3623cf049aab28ead2f1ec69, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxChargeTime: 4
+  projectileStepValue: 0
+  projectilePrefab: {fileID: 3427301390142769001, guid: f7184eea81e86884cb1ab83188e6ebd8,
+    type: 3}
+  projectileSpawnPoint: {fileID: 0}
+  unit: {fileID: 1618744300}
+  sensitivityZoom: 0
 --- !u!1 &1945270191
 GameObject:
   m_ObjectHideFlags: 0
@@ -1881,6 +1914,7 @@ MonoBehaviour:
     type: 3}
   projectileSpawnPoint: {fileID: 310184825}
   unit: {fileID: 1618744300}
+  sensitivityZoom: 5
 --- !u!1 &2010287951
 GameObject:
   m_ObjectHideFlags: 0
@@ -1895,7 +1929,7 @@ GameObject:
   - component: {fileID: 2010287953}
   m_Layer: 0
   m_Name: LaneWitchLeft
-  m_TagString: Untagged
+  m_TagString: SceneObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -2078,7 +2112,7 @@ GameObject:
   - component: {fileID: 2144817658}
   m_Layer: 0
   m_Name: LaneWitchRight
-  m_TagString: Untagged
+  m_TagString: SceneObject
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

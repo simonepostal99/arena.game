@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class ProjectileMovement : MonoBehaviour
 {
-    Rigidbody body;
+    Rigidbody bodyArrow;
     int team;
 
     private void Awake()
     {
-        body = GetComponent<Rigidbody>();
+        bodyArrow = GetComponent<Rigidbody>();
     }
 
     // Start is called before the first frame update
@@ -22,10 +22,11 @@ public class ProjectileMovement : MonoBehaviour
     void Update()
     {
         //aggiorno la rotazione della freccia (movimento parabolico)
-        transform.rotation = Quaternion.LookRotation(body.velocity);
+        transform.rotation = Quaternion.LookRotation(bodyArrow.velocity);
     }
 
 
+    //other è il collider dell'oggetto colpito
     private void OnTriggerEnter(Collider other)
     {
         //controllo se la freccia si scontra contro un'unità
@@ -34,13 +35,16 @@ public class ProjectileMovement : MonoBehaviour
             //controllo se l'unità è del team avversario della freccia
             if(other.GetComponent<Unit>().getTeam() != team)
             {
-                
                 //eseguo il knockvbck sull'avversario
                 other.GetComponent<Knockback>().knockback(transform.forward);
 
                 //distruggo la freccia
                 Destroy(gameObject);
             }
+        }else if (other.tag == "SceneObject")
+        {
+            //distruggo la freccia
+            Destroy(gameObject);
         }
     }
 
