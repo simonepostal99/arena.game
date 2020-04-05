@@ -1,9 +1,26 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using TMPro;
 
 public class GameLobby : MonoBehaviour
 {
+
+    public static GameLobby instance;
+
+    private void Awake()
+    {
+        if(instance == null)
+        {
+            instance = this;
+        }
+        else
+        {
+            Debug.Log("More than one instance of GameLobby");
+        }
+    }
+
+
     //Our player name
     string playerName = "Player 1";
     //This client's version number. Users are separated from each other by gameversion (which allows you to make breaking changes).
@@ -14,6 +31,15 @@ public class GameLobby : MonoBehaviour
     string roomName = "Room 1";
     Vector2 roomListScroll = Vector2.zero;
     bool joiningRoom = false;
+
+
+
+    /***** VARIABILI CREATE PER UTILIZZARE LA NUOVA UI *****/
+
+    [SerializeField] TextMeshProUGUI playerNameText;
+    [SerializeField] TextMeshProUGUI roomNameText;
+    [SerializeField] GameObject roomOnListPrefab;
+    [SerializeField] GameObject roomListParent;
 
     // Use this for initialization
     void Start()
@@ -29,6 +55,7 @@ public class GameLobby : MonoBehaviour
         {
             // Connect to the photon master-server. We use the settings saved in PhotonServerSettings (a .asset file in this project)
             PhotonNetwork.ConnectUsingSettings(gameVersion);
+            
         }
     }
 
@@ -46,7 +73,7 @@ public class GameLobby : MonoBehaviour
         createdRooms = PhotonNetwork.GetRoomList();
     }
 
-    void OnGUI()
+    /*void OnGUI()
     {
         GUI.Window(0, new Rect(Screen.width / 2 - 450, Screen.height / 2 - 200, 900, 400), LobbyWindow, "Lobby");
     }
@@ -149,7 +176,7 @@ public class GameLobby : MonoBehaviour
             GUI.enabled = true;
             GUI.Label(new Rect(900 / 2 - 50, 400 / 2 - 10, 100, 20), "Connecting...");
         }
-    }
+    }*/
 
     void OnPhotonCreateRoomFailed()
     {
@@ -167,7 +194,8 @@ public class GameLobby : MonoBehaviour
     {
         Debug.Log("OnCreatedRoom");
         //Set our player name
-        PhotonNetwork.playerName = playerName;
+        //PhotonNetwork.playerName = playerName;
+        PhotonNetwork.playerName = playerNameText.text; //nuova istruzione per la nuova UI
         //Load the Scene called GameLevel (Make sure it's added to build settings)
         PhotonNetwork.LoadLevel("GameLevel");
     }
@@ -175,5 +203,82 @@ public class GameLobby : MonoBehaviour
     void OnJoinedRoom()
     {
         Debug.Log("OnJoinedRoom");
+    }
+
+
+
+
+
+    /***** METODI CREATI PER USARE LA NUOVA UI CREATA DA NOI*****/
+
+    public void JoinButton(int idRoom)
+    {
+        joiningRoom = true;
+
+        //Set our Player name
+        PhotonNetwork.playerName = playerNameText.text;
+
+        //Join the Room
+        PhotonNetwork.JoinRoom(createdRooms[idRoom].Name);
+    }
+
+    public void CreateRoom()
+    {
+        if (roomNameText.text != "")
+        {
+            joiningRoom = true;
+
+            RoomOptions roomOptions = new RoomOptions();
+            roomOptions.IsOpen = true;
+            roomOptions.IsVisible = true;
+            roomOptions.MaxPlayers = (byte)10; //Set any number
+
+            PhotonNetwork.JoinOrCreateRoom(roomNameText.text, roomOptions, TypedLobby.Default);
+        }
+    }
+
+    public void CreateRoomList()
+    {
+        if (PhotonNetwork.connected)
+        {
+            createdRooms = PhotonNetwork.GetRoomList();
+
+            if (createdRooms.Length == 0)
+            {
+                //no rooms
+            }
+            else
+            {
+                for (int i = 0; i < createdRooms.Length; i++)
+                {
+                    GameObject newRoom = Instantiate(roomOnListPrefab, roomListParent.transform);
+                    newRoom.GetComponent<RoomPrefab>().SetRoomName(createdRooms[i].Name);
+                    newRoom.GetComponent<RoomPrefab>().SetRoomId(i);
+
+                    /*GUILayout.BeginHorizontal("box");
+                    GUILayout.Label(createdRooms[i].Name, GUILayout.Width(400));
+                    GUILayout.Label(createdRooms[i].PlayerCount + "/" + createdRooms[i].MaxPlayers);
+
+                    GUILayout.FlexibleSpace();
+
+                    if (GUILayout.Button("Join Room"))
+                    {
+                        joiningRoom = true;
+
+                        //Set our Player name
+                        PhotonNetwork.playerName = playerName;
+
+                        //Join the Room
+                        PhotonNetwork.JoinRoom(createdRooms[i].Name);
+                    }
+                    GUILayout.EndHorizontal();*/
+                }
+            }
+        }
+        else
+        {
+            //We are not connected, estabilish a new connection
+            PhotonNetwork.ConnectUsingSettings(gameVersion);
+        }
     }
 }
