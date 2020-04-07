@@ -325,6 +325,7 @@ GameObject:
   - component: {fileID: 2576163795701714382}
   - component: {fileID: 2576163795701714381}
   - component: {fileID: 2576163795701714383}
+  - component: {fileID: 2235684989773858235}
   m_Layer: 0
   m_Name: Camera
   m_TagString: Untagged
@@ -413,13 +414,40 @@ MonoBehaviour:
   projectileStepValue: 50
   projectilePrefab: {fileID: 3427301390142769001, guid: f7184eea81e86884cb1ab83188e6ebd8,
     type: 3}
-  positionSpawn: {fileID: 0}
+  positionSpawn: {fileID: 2576163796193469013}
   unit: {fileID: 2576163795354548928}
   sensitivityZoomIn: 7
   sensitivityZoomOut: 4
   maxCameraFieldOfView: 60
   minCameraFieldOfView: 40
-  PhotonView: {fileID: 5939859277119958932}
+  photonView: {fileID: 2235684989773858235}
+--- !u!114 &2235684989773858235
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2576163795701714418}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ownerId: 0
+  group: 0
+  OwnerShipWasTransfered: 0
+  prefixBackup: -1
+  synchronization: 3
+  onSerializeTransformOption: 3
+  onSerializeRigidBodyOption: 2
+  ownershipTransfer: 0
+  ObservedComponents:
+  - {fileID: 2576163795701714383}
+  ObservedComponentsFoldoutOpen: 1
+  viewIdField: 0
+  instantiationId: -1
+  currentMasterID: -1
+  isRuntimeInstantiated: 0
 --- !u!1 &2576163796193469012
 GameObject:
   m_ObjectHideFlags: 0

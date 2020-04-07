@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/Utente/Desktop/Builds Arena Game 3D/Battle Arena 3D.exe
+C:/Users/Simone/Desktop/Projects/arena.game/Battle Arena Build/Battle Arena 3D.exe
 SceneListBegin?
 Assets/Scenes/NetworkScene.unity
 Assets/Scenes/GameLevel.unity
@@ -257,7 +257,7 @@ d791aa6007fa3640be1164ea75bb087d Unity.TextMeshPro.dll:TMPro.TMP_StyleSheet
 0d07d8506393319facb4e9e723ca368a Assembly-CSharp.dll:.JumpAndRunMovement
 a7fdc7565fb5d0a515ff7026dc6e7a36 Assembly-CSharp.dll:.DemoMecanimGUI
 2b53d93770b9036b2fd1c7854560bc69 Assembly-CSharp.dll:.MoveByKeys
-161ffd3320fd473cbfa2653e4c30eef3 Assembly-CSharp.dll:.DistanceAttack
+3ab0faa94e2ed881756176e18beb47af Assembly-CSharp.dll:.DistanceAttack
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.QuitOnEscapeOrBack
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:ExitGames.Demos.DemoAnimator.PlayerNameInputField
 32dd86857fb6fedb946a524cb50fecf8 Assembly-CSharp.dll:.Tank

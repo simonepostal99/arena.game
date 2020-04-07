@@ -12,9 +12,18 @@ public class RoomController : MonoBehaviour
             return;
         }
 
-        Cursor.lockState = CursorLockMode.None;
-        Cursor.visible = true;
+        
 
+    }
+
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
     }
 
     void OnGUI()

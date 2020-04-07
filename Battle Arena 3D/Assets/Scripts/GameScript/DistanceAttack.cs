@@ -15,7 +15,7 @@ public class DistanceAttack : MonoBehaviour
     [SerializeField] Unit unit;
     [SerializeField] float sensitivityZoomIn, sensitivityZoomOut;
     [SerializeField] float maxCameraFieldOfView, minCameraFieldOfView;
-    [SerializeField] PhotonView PhotonView;
+    [SerializeField] PhotonView photonView;
 
     private Camera camera;
 
@@ -34,6 +34,7 @@ public class DistanceAttack : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        
         if (Input.GetMouseButton(0))
         {
             //aggiorno il tempo di pressione in secondi mentre tengo premuto il mouse
@@ -52,10 +53,10 @@ public class DistanceAttack : MonoBehaviour
             attackButtonPressedTime = Mathf.Clamp(attackButtonPressedTime, 0.0f, maxChargeTime);
             projectileForce = projectileStepValue * attackButtonPressedTime;
 
-            int team = unit.getTeam();
+            //int team = unit.getTeam();
 
             //spawno il proiettile
-            PhotonView.RPC("onShoot", PhotonTargets.All, new object[] { positionSpawn.transform.position, Quaternion.identity, projectilePrefab, projectileForce, team });
+            photonView.RPC("onShoot", PhotonTargets.All, transform.position, Quaternion.identity, projectilePrefab.name, projectileForce, unit.getTeam() );
 
             //PhotonNetwork.Destroy(projectile);
 
@@ -69,6 +70,25 @@ public class DistanceAttack : MonoBehaviour
         }
 
         
+    }
+
+    [PunRPC]
+    public void onShoot(Vector3 positionSpawn, Quaternion rotation, string projectileName, float projectileForce, int team)
+    {
+        double timeStamp = PhotonNetwork.time;
+
+        createProjectile(positionSpawn, rotation, timeStamp, projectileName, projectileForce, team);
+    }
+
+    public void createProjectile(Vector3 positionSpawn, Quaternion rotation, double timeStamp, string projectileName, float projectileForce, int team)
+    {
+        GameObject newProjectile = Instantiate(Resources.Load<GameObject>(projectileName), positionSpawn, rotation);
+
+        //aggiungo la forza di lancio al proiettile
+        newProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * projectileForce, ForceMode.Impulse);
+
+        //assegno a quale team appartiene il proiettile
+        newProjectile.GetComponent<ProjectileMovement>().setTeam(team);
     }
 
 }

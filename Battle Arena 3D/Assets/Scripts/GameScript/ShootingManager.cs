@@ -17,23 +17,23 @@ public class ShootingManager : MonoBehaviour
     }
 
 
-    [PunRPC]
-    public void onShoot(Vector3 positionSpawn, Quaternion rotation, GameObject projectile, float projectileForce, int unit)
+    /*[PunRPC]
+    public void onShoot(Vector3 positionSpawn, Quaternion rotation, string projectileName, int projectileForce, int team)
     {
         double timeStamp = PhotonNetwork.time;
 
-        createProjectile(positionSpawn, rotation, timeStamp, projectile, projectileForce, unit);
+        createProjectile(positionSpawn, rotation, timeStamp, projectileName, projectileForce, team);
     }
 
-    public void createProjectile(Vector3 positionSpawn, Quaternion rotation, double timeStamp, GameObject projectile, float projectileForce, int unit)
+    public void createProjectile(Vector3 positionSpawn, Quaternion rotation, double timeStamp, string projectileName, int projectileForce, int team)
     {
-        GameObject projectil = Instantiate(projectile, positionSpawn, rotation);
+        GameObject newProjectile = Instantiate(Resources.Load<GameObject>(projectileName), positionSpawn, rotation);
 
         //aggiungo la forza di lancio al proiettile
-        projectil.GetComponent<Rigidbody>().AddForce(transform.forward * projectileForce, ForceMode.Impulse);
+        newProjectile.GetComponent<Rigidbody>().AddForce(transform.forward * projectileForce, ForceMode.Impulse);
 
         //assegno a quale team appartiene il proiettile
-        projectil.GetComponent<ProjectileMovement>().setTeam(unit);
-    }
+        newProjectile.GetComponent<ProjectileMovement>().setTeam(team);
+    }*/
 
 }
