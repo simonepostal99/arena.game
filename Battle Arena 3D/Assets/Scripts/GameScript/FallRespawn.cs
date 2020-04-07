@@ -20,6 +20,42 @@ public class FallRespawn : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        UnitType unitType = GetComponent<Unit>().getUnitType();
+        int team = GetComponent<Unit>().getTeam();
+
+        if(team == 1) //team destra
+        {
+            switch (unitType)
+            {
+                case UnitType.archer:
+                    lane = GameManager.instance.getSpawnRightArcher();
+                    break;
+
+                case UnitType.witch:
+                    lane = GameManager.instance.getSpawnRightWitch();
+                    break;
+
+                case UnitType.gladiator:
+                    lane = GameManager.instance.getSpawnRightGladiator();
+                    break;
+            }
+        }else if(team == 2) //team sinistra
+        {
+            switch (unitType)
+            {
+                case UnitType.archer:
+                    lane = GameManager.instance.getSpawnLeftArcher();
+                    break;
+
+                case UnitType.witch:
+                    lane = GameManager.instance.getSpawnLeftWitch();
+                    break;
+
+                case UnitType.gladiator:
+                    lane = GameManager.instance.getSpawnLeftGladiator();
+                    break;
+            }
+        }
         
     }
 

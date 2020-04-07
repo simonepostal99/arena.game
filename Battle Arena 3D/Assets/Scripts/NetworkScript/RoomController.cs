@@ -2,11 +2,6 @@
 
 public class RoomController : MonoBehaviour
 {
-    //Player instance prefab, must be located in the Resources folder
-    public GameObject playerPrefab;
-    //Player spawn point
-    public Transform spawnPoint;
-
     // Use this for initialization
     void Start()
     {
@@ -17,8 +12,9 @@ public class RoomController : MonoBehaviour
             return;
         }
 
-        //We're in a room. spawn a character for the local player. it gets synced by using PhotonNetwork.Instantiate
-        PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, Quaternion.identity, 0);
+        Cursor.lockState = CursorLockMode.None;
+        Cursor.visible = true;
+
     }
 
     void OnGUI()

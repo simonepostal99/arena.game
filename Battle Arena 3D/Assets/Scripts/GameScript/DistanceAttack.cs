@@ -53,7 +53,7 @@ public class DistanceAttack : MonoBehaviour
             projectileForce = projectileStepValue * attackButtonPressedTime;
 
             //spawno il proiettile
-            GameObject projectile = Instantiate(projectilePrefab, projectileSpawnPoint.position, transform.rotation);
+            GameObject projectile = PhotonNetwork.Instantiate("ArrowPrefab", projectileSpawnPoint.position, transform.rotation, 0);
 
             //aggiungo la forza di lancio al proiettile
             projectile.GetComponent<Rigidbody>().AddForce(transform.forward * projectileForce, ForceMode.Impulse);
@@ -61,7 +61,7 @@ public class DistanceAttack : MonoBehaviour
             //assegno a quale team appartiene il proiettile
             projectile.GetComponent<ProjectileMovement>().setTeam(unit.getTeam());
 
-            Destroy(projectile, 20f);
+            PhotonNetwork.Destroy(projectile);
 
             //azzero la forza di lancio
             attackButtonPressedTime = 0;

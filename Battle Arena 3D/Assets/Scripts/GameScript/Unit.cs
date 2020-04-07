@@ -13,6 +13,7 @@ public abstract class Unit : MonoBehaviour{
     [SerializeField] private Object dress;
     [SerializeField] private Object weapon;
     [SerializeField] private UnitType unitType;
+    //Se 1=destra se 2=sinistra
     [SerializeField] private int team;
 
     //get set unitName
@@ -117,16 +118,14 @@ public abstract class Unit : MonoBehaviour{
         return team;
     }
 
-    public enum UnitType
-    {
-        tank,
-        range,
-        wizard,
-        monster
-    }
+}
 
-
-    
+public enum UnitType
+{
+    gladiator,
+    archer,
+    witch,
+    monster
 }
 
 
