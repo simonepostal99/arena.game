@@ -402,7 +402,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localScripts:
   - {fileID: 2154042827815966286}
-  - {fileID: 0}
+  - {fileID: 2154042827995308362}
   localObject:
   - {fileID: 2154042827995308407}
 --- !u!1 &2154042827995308407

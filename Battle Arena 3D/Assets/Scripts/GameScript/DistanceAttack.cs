@@ -11,10 +11,11 @@ public class DistanceAttack : MonoBehaviour
     [SerializeField] float projectileStepValue;
 
     [SerializeField] GameObject projectilePrefab;
-    [SerializeField] Transform projectileSpawnPoint;
+    [SerializeField] Transform positionSpawn;
     [SerializeField] Unit unit;
     [SerializeField] float sensitivityZoomIn, sensitivityZoomOut;
     [SerializeField] float maxCameraFieldOfView, minCameraFieldOfView;
+    [SerializeField] PhotonView PhotonView;
 
     private Camera camera;
 
@@ -47,21 +48,16 @@ public class DistanceAttack : MonoBehaviour
 
         if (Input.GetMouseButtonUp(0))
         {
-            
             //assegno il valore della forza di lancio in base al tempo di pressione del mouse
             attackButtonPressedTime = Mathf.Clamp(attackButtonPressedTime, 0.0f, maxChargeTime);
             projectileForce = projectileStepValue * attackButtonPressedTime;
 
+            int team = unit.getTeam();
+
             //spawno il proiettile
-            GameObject projectile = PhotonNetwork.Instantiate("ArrowPrefab", projectileSpawnPoint.position, transform.rotation, 0);
+            PhotonView.RPC("onShoot", PhotonTargets.All, new object[] { positionSpawn.transform.position, Quaternion.identity, projectilePrefab, projectileForce, team });
 
-            //aggiungo la forza di lancio al proiettile
-            projectile.GetComponent<Rigidbody>().AddForce(transform.forward * projectileForce, ForceMode.Impulse);
-
-            //assegno a quale team appartiene il proiettile
-            projectile.GetComponent<ProjectileMovement>().setTeam(unit.getTeam());
-
-            PhotonNetwork.Destroy(projectile);
+            //PhotonNetwork.Destroy(projectile);
 
             //azzero la forza di lancio
             attackButtonPressedTime = 0;

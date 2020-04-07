@@ -216,6 +216,7 @@
     <Compile Include="Assets\Scripts\GameScript\Knockback.cs" />
     <Compile Include="Assets\Scripts\GameScript\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\GameScript\ProjectileMovement.cs" />
+    <Compile Include="Assets\Scripts\GameScript\ShootingManager.cs" />
     <Compile Include="Assets\Scripts\GameScript\Tank.cs" />
     <Compile Include="Assets\Scripts\GameScript\Unit.cs" />
     <Compile Include="Assets\Scripts\NetworkScript\ChooseUnit.cs" />

@@ -310,7 +310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   localScripts:
   - {fileID: 2576163795354548939}
-  - {fileID: 0}
+  - {fileID: 2576163795701714383}
   localObject:
   - {fileID: 2576163795701714418}
 --- !u!1 &2576163795701714418
@@ -413,12 +413,13 @@ MonoBehaviour:
   projectileStepValue: 50
   projectilePrefab: {fileID: 3427301390142769001, guid: f7184eea81e86884cb1ab83188e6ebd8,
     type: 3}
-  projectileSpawnPoint: {fileID: 2576163796193469013}
+  positionSpawn: {fileID: 0}
   unit: {fileID: 2576163795354548928}
   sensitivityZoomIn: 7
   sensitivityZoomOut: 4
   maxCameraFieldOfView: 60
   minCameraFieldOfView: 40
+  PhotonView: {fileID: 5939859277119958932}
 --- !u!1 &2576163796193469012
 GameObject:
   m_ObjectHideFlags: 0
